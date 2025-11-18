@@ -1,0 +1,18 @@
+---
+devices:
+  CSR1kv:
+    alias: "CSR1000V Router"
+    type: "router"
+    os: "iosxe"
+    platform: csr1000v
+    credentials:
+      default:
+        username: cisco
+        password: cisco123!
+    connections:
+      cli:
+        protocol: ssh
+        ip: 192.168.97.139
+        port: 22
+        arguments:
+          connection_timeout: 360

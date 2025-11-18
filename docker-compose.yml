@@ -1,0 +1,48 @@
+version: '3.6'
+
+networks:
+  ollama:
+
+services:
+  ollama:
+    image: ollama/ollama
+    networks:
+      - ollama
+    volumes:
+      - ./data/ollama:/root/.ollama
+    ports:
+      - 11434:11434
+
+  ollama-webui:
+    image: ghcr.io/ollama-webui/ollama-webui:main
+    volumes:
+      - ./data/ollama-webui:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - 3002:8080
+    environment:
+      - 'OLLAMA_API_BASE_URL=http://ollama:11434/api'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks:
+      - ollama
+
+  ios_buddy:
+    image: ios_buddy:ios_buddy
+    container_name: ios_buddy
+    restart: always     
+    build: 
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8502:8502"
+      - "22:22"
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ollama
+    volumes:
+      - ./config.toml:/root/.streamlit/config.toml      
