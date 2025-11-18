@@ -2,7 +2,8 @@ Use Lubuntu Base virtualbox image
 
 # Enable copy and paste in VM
 Menu => Devices => Insert Guest Additions CD image
-**if cannot, go add optical drive under storage and choose the VBoxGuestAdditions.iso
+
+_if cannot, go add optical drive under storage and choose the VBoxGuestAdditions.iso_
 
 cd /media/analyst/VBox_GAs_7.1.4/
 sudo ./VBoxLinuxAdditions.run
@@ -34,13 +35,18 @@ sudo chmod +x /usr/local/bin/docker-compose
 # Install Chromium browser
 sudo apt install chromium-browser
 
+# Clone repository and setup container
+
 git clone https://github.com/hanley/IOS.git
 
 cd IOS
+
 sudo docker-compose up
 
 # To use the platform
+
 localhost:8502
 
 # To load model
+
 localhost:3002
