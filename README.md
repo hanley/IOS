@@ -6,7 +6,9 @@ Menu => Devices => Insert Guest Additions CD image
 _if cannot, go add optical drive under storage and choose the VBoxGuestAdditions.iso_
 
 cd /media/analyst/VBox_GAs_7.1.4/
+
 sudo ./VBoxLinuxAdditions.run
+
 sudo reboot
 
 # Install docker and docker compose
