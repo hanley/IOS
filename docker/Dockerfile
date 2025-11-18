@@ -25,6 +25,7 @@ RUN echo "==> Install dos2unix..." \
 RUN echo "==> Install langchain requirements.." \
  && pip install -U --quiet langchain_experimental \
  && pip install langchain \
+ && pip install langchain_classic \
  && pip install langchain-community \
  && pip install chromadb \
  && pip install tiktoken
